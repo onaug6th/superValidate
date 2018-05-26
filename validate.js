@@ -8,30 +8,28 @@
  * ES5实现的校验函数
  * @param { Array } option 需要批量生成校验的数组。
  */
-function validateES5(option) {
+function validateES5(options) {
 
-    var args = Array.prototype.slice.call(arguments);
-
-    args.forEach(function (options, index) {
-        el.setAttribute("data-validate", (data = new ValidateES5()));
+    options.forEach(function (option, index) {
+        option.el.setAttribute("data-validate", (data = new ValidateES5(option)));
     });
 }
 
 /**
  * ES5构造函数
- * @param {*} options 
+ * @param {*} option
  */
-var ValidateES5 = function (options) {
+var ValidateES5 = function (option) {
     //  全部配置
-    this.options = options;
+    this.options = option;
     //  挂载目标
-    this.el = document.querySelector(options.el);
-    //  校验事件
-    this.event = options.event;
+    this.el = document.querySelector(option.el);
+    //  校验发生的事件
+    this.event = option.event;
     //  校验规则
-    this.config = options.config;
+    this.config = option.config;
     //  回调函数
-    this.callBack = options.callBack;
+    this.callBack = option.callBack;
 
     this.init();
 };
@@ -45,5 +43,5 @@ ValidateES5.prototype.init = function () {
 
 
 ValidateES5.prototype.handleValidate = function () {
-
+    this.config
 };
