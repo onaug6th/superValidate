@@ -52,7 +52,10 @@ var ValidateES5 = function (option) {
     this.init();
 };
 
-ValidateES5.prototype.DEFAULT_CONFIG = {
+/**
+ * 参考配置
+ */
+ValidateES5.prototype.EXAMPLE_CONFIG = {
 
     //  默认值
     defaultValue: "",
@@ -163,6 +166,9 @@ ValidateES5.prototype.handleValidate = function (args) {
 
 };
 
+/**
+ * 方法集
+ */
 ValidateES5.prototype.methods = {
     required: function (value) {
         var defaultValue = this.config.defaultValue;

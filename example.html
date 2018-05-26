@@ -22,15 +22,13 @@
                 rules: {
                     required: {
                         value: true,
-                        msg: "必填",
-                        callBack: function () {
-                            
-                        }
+                        msg: "必填"
+                    },
+                    type: {
+                        value: "text",
+                        msg: "只能输入文本"
                     }
                 }
-            },
-            callBack: function () {
-                console.info([].slice.call(arguments));
             }
         }
     ]
