@@ -18,8 +18,16 @@
             el: "#userName",
             event: "change",
             config: {
-                required: true,
-                type: "text"
+                defauleValue: "默认值",
+                rules: {
+                    required: {
+                        value: true,
+                        msg: "必填",
+                        callBack: function () {
+                            
+                        }
+                    }
+                }
             },
             callBack: function () {
                 console.info([].slice.call(arguments));
@@ -29,4 +37,5 @@
     validateES5(needValidate);
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+
 </html>
