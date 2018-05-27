@@ -179,13 +179,16 @@ ValidateES5.prototype.methods = {
             if (msg) {
                 alert(msg);
             }
-            if(defaultValue){
+            if (defaultValue) {
                 this.el.value = defaultValue;
             }
             answer = false;
         }
-        if(typeof callBack === "function"){
-            callBack();
+        if (typeof callBack === "function") {
+            callBack({
+                value: value,
+                that: this
+            });
         }
         return answer;
     }
