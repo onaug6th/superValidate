@@ -180,11 +180,13 @@ ValidateES5.prototype.methods = {
                 alert(msg);
             }
             if(defaultValue){
-                this.el.setAttribute("value", defaultValue);   
+                this.el.value = defaultValue;
             }
             answer = false;
         }
-        callBack();
+        if(typeof callBack === "function"){
+            callBack();
+        }
         return answer;
     }
 }

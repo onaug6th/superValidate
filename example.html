@@ -18,22 +18,21 @@
             el: "#userName",
             event: "change",
             config: {
-                defauleValue: "默认值",
+                defaultValue: "默认值",
                 rules: {
                     required: {
                         value: true,
                         msg: "必填"
                     },
-                    type: {
-                        value: "text",
-                        msg: "只能输入文本"
-                    }
+                    // type: {
+                    //     value: "text",
+                    //     msg: "只能输入文本"
+                    // }
                 }
             }
         }
-    ]
+    ];
     validateES5(needValidate);
 </script>
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
 
 </html>
