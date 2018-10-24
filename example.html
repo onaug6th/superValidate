@@ -5,34 +5,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>validate</title>
+    <title>superValidate</title>
+    <style>
+        .super-form{
+            
+        }
+        .super-form label{
+            display: inline-block;
+            width : 30%;
+        }
+        .super-form input{
+            display: inline-block;
+            width : 66%;
+        }
+    </style>
 </head>
 
-<body style="background: black">
-    <input id="userName" type="text" />
+<body>
+    <form id="example" class="super-form">
+        <div>
+            <label>必填校验</label><input id="userName" type="text" />
+        </div>
+        <div>
+            <label>只能输入数字</label><input id="onlyNumber" type="text" />
+        </div>
+    </form>
 </body>
-<script src="./validate.js"></script>
+<script src="./superValidate.js"></script>
 <script>
-    var needValidate = [
+    var validateFrom = {
+        el: "#example",
+        forms: [
+            [
+                "#userName", "change", [], {
+                    required: true,
+                    failMsg: "校验失败的提示信息"
+                }, function () {
+                    alert("这个是必填的回调");
+                }
+            ],
+            [
+                "#onlyNumber", "change", ["number"], {
+                    required: true
+                }, function () {
+                    alert("只能输入数字");
+                }
+            ],
+            [
+                "#intNumber", "change", ["number"], {
+                    required: true,
+                    integer: true,
+                    msg: {
+                        integer: "我是输入非整数后的提示语"
+                    }
+                }
+            ],
+            [
+                "#positiveNumber", "change", ["number"], {
+                    required: true,
+                    positive: true,
+                    msg: {
+                        integer: "我是输入非正数后的提示语"
+                    }
+                }
+            ]
+        ]
+    }
+
+    var validateFrom = [
         {
+            //  挂靠目标
             el: "#userName",
+            //  触发事件
             event: "change",
+            //  输入类型，默认为全类型
+            types: [],
+            //  配置
             config: {
+                //  默认值
                 defaultValue: "默认值",
+                //  校验规则
                 rules: {
-                    required: {
-                        value: true,
-                        msg: "必填"
-                    },
-                    // type: {
-                    //     value: "text",
-                    //     msg: "只能输入文本"
-                    // }
+                    required: true
+                },
+                msg: {
+                    required: "必填"
+                }
+            }
+        },
+        {
+            el: "#onlyNumber",
+            event: "change",
+            types: ["number"],
+            config: {
+                rules: {
+                    required: true
+                },
+                msg: {
+                    required: "必填"
                 }
             }
         }
     ];
-    validateES5(needValidate);
+
+    superValidate(validateFrom);
 </script>
 
 </html>
